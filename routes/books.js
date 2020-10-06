@@ -58,6 +58,17 @@ router.delete('/:book_id', (req, res, next) => {
   });
 });
 
+/* GET top X books by likes. */
+router.get('/top/:top_num', (req, res) => {
+  const top_num = req.params.top_num;
+  const promise = Book.find({}).limit(Number(top_num)).sort({likes: -1});
+  promise.then((data) => {
+    res.json(data);
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
 /* CREATE a new book. */
 router.post('/', (req, res) => {
   /*
