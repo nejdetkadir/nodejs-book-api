@@ -12,6 +12,20 @@ router.get('/', (req, res) => {
   });
 });
 
+/* GET a single book with by id. */
+router.get('/:book_id', (req, res, next) => {
+  const promise = Book.findById(req.params.book_id);
+  promise.then((book) => {
+    if (!book)
+      next({
+        message: 'The book not found.'
+      });
+    res.json(book);
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
 /* CREATE a new book. */
 router.post('/', (req, res) => {
   /*
