@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   });
 });
 
-/* GET a single book with by id. */
+/* GET single book with by id. */
 router.get('/:book_id', (req, res, next) => {
   const promise = Book.findById(req.params.book_id);
   promise.then((book) => {
@@ -26,9 +26,25 @@ router.get('/:book_id', (req, res, next) => {
   });
 });
 
-/* UPDATE a single book with by id. */
+/* UPDATE single book with by id. */
 router.put('/:book_id', (req, res, next) => {
   const promise = Book.findByIdAndUpdate(req.params.book_id, req.body, {new: true});
+  promise.then((book) => {
+    if (!book)
+      next({
+        message: 'The book not found.'
+      });
+    res.json({
+      status: true
+    });
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
+/* REMOVE single book with by id. */
+router.delete('/:book_id', (req, res, next) => {
+  const promise = Book.findByIdAndRemove(req.params.book_id);
   promise.then((book) => {
     if (!book)
       next({
