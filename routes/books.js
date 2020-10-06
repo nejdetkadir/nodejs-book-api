@@ -26,6 +26,22 @@ router.get('/:book_id', (req, res, next) => {
   });
 });
 
+/* UPDATE a single book with by id. */
+router.put('/:book_id', (req, res, next) => {
+  const promise = Book.findByIdAndUpdate(req.params.book_id, req.body, {new: true});
+  promise.then((book) => {
+    if (!book)
+      next({
+        message: 'The book not found.'
+      });
+    res.json({
+      status: true
+    });
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
 /* CREATE a new book. */
 router.post('/', (req, res) => {
   /*
