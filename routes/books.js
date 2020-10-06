@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET users listing. */
+/* GET books listing. */
 router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
+  res.json({
+    status: true
+  });
 });
 
 module.exports = router;
