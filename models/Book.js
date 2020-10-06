@@ -24,7 +24,7 @@ const BookSchema = new Schema({
     },
     author_id: {
         type: Schema.Types.ObjectID,
-        required: true
+        //required: true
     },
     created_at: {
         type: Date,
