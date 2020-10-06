@@ -2,8 +2,18 @@ const express = require('express');
 const router = express.Router();
 const Book = require('../models/Book');
 
+/* GET books list. */
+router.get('/', (req, res) => {
+  const promise = Book.find({});
+  promise.then((data) => {
+    res.json(data);
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
 /* CREATE a new book. */
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
   /*
   const {name, category, publisher, year, likes} = req.body;
   const book = new Book({
@@ -28,12 +38,10 @@ router.post('/', (req, res, next) => {
   promise.then((data) => {
     res.json({
       status: true
-    })
+    });
   }).catch((err) => {
     res.json(err);
   })
 });
-
-
 
 module.exports = router;
