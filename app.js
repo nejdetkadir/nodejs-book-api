@@ -8,6 +8,9 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
+// database connection
+const db = require('./helper/db')();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -7,6 +7,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -36,7 +43,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602017110746</updated>
-      <workItem from="1602017111815" duration="844000" />
+      <workItem from="1602017111815" duration="2781000" />
     </task>
     <servers />
   </component>
@@ -48,5 +55,9 @@
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state x="1815" y="188" width="1022" height="737" key="SettingsEditor/1366.0.1920.1080/0.143.1366.768@1366.0.1920.1080" timestamp="1602017161225" />
+    <state x="1989" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1602021148336">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1989" y="259" width="672" height="678" key="search.everywhere.popup/1366.0.1920.1080/0.143.1366.768@1366.0.1920.1080" timestamp="1602021148336" />
   </component>
 </project>
