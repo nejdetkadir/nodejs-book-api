@@ -61,7 +61,25 @@ router.delete('/:book_id', (req, res, next) => {
 /* GET top X books by likes. */
 router.get('/top/:top_num', (req, res) => {
   const top_num = req.params.top_num;
-  const promise = Book.find({}).limit(Number(top_num)).sort({likes: -1});
+  const promise = Book.find({}).limit(parseInt(top_num)).sort({likes: -1});
+  promise.then((data) => {
+    res.json(data);
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
+/* GET between two dates books list by year. */
+router.get('/year/:start_year/:end_year', (req, res) => {
+  const {start_year, end_year} = req.params;
+  const promise = Book.find(
+      {
+        year: {
+          "$gte": parseInt(start_year),
+          "$lte": parseInt(end_year)
+        }
+      }
+  );
   promise.then((data) => {
     res.json(data);
   }).catch((err) => {
