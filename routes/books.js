@@ -4,7 +4,19 @@ const Book = require('../models/Book');
 
 /* GET books list. */
 router.get('/', (req, res) => {
-  const promise = Book.find({});
+  const promise = Book.aggregate([
+    {
+      $lookup: {
+        from: 'authors',
+        localField: 'author_id',
+        foreignField: '_id',
+        as: 'author'
+      },
+    },
+    {
+      $unwind: '$author'
+    }
+  ]);
   promise.then((data) => {
     res.json(data);
   }).catch((err) => {
