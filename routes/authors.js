@@ -60,7 +60,7 @@ router.get('/', (req, res) => {
   })
 });
 
-/* GET single author and theirs books. */
+/* GET single author and theirs books by id. */
 router.get('/:author_id', (req, res) => {
   const promise = Author.aggregate([
     {
@@ -109,6 +109,22 @@ router.get('/:author_id', (req, res) => {
   }).catch((err) => {
     res.json(err);
   })
+});
+
+/* UPDATE single author with by id. */
+router.put('/:author_id', (req, res, next) => {
+  const promise = Author.findByIdAndUpdate(req.params.author_id, req.body, {new: true});
+  promise.then((author) => {
+    if (!author)
+      next({
+        message: 'The editor not found.'
+      });
+    res.json({
+      status: true
+    });
+  }).catch((err) => {
+    res.json(err);
+  });
 });
 
 module.exports = router;
