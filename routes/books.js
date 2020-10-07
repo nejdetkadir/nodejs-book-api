@@ -46,9 +46,7 @@ router.put('/:book_id', (req, res, next) => {
       next({
         message: 'The book not found.'
       });
-    res.json({
-      status: true
-    });
+    res.json(book);
   }).catch((err) => {
     res.json(err);
   });
@@ -123,9 +121,7 @@ router.post('/', (req, res) => {
    */
   const promise = book.save();
   promise.then((data) => {
-    res.json({
-      status: true
-    });
+    res.json(data);
   }).catch((err) => {
     res.json(err);
   })
