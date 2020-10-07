@@ -13,4 +13,50 @@ router.post('/', (req, res) => {
   });
 });
 
+/* GET authors and theirs books. */
+router.get('/', (req, res) => {
+  const promise = Author.aggregate([
+    {
+      $lookup: {
+        from: 'books',
+        localField: '_id',
+        foreignField: 'author_id',
+        as: 'books'
+      }
+    },
+    {
+      $unwind: {
+        path: '$books',
+        preserveNullAndEmptyArrays: true
+      }
+    },
+    {
+      $group: {
+        _id: {
+          _id: '$_id',
+          name: '$name',
+          surname: '$surname',
+          bio: '$bio'
+        },
+        books: {
+          $push: '$books'
+        }
+      }
+    },
+    {
+      $project: {
+        _id: '$_id._id',
+        name: '$_id.name',
+        surname: '$_id.surname',
+        books: '$books'
+      }
+    }
+  ]);
+  promise.then((data) => {
+    res.json(data);
+  }).catch((err) => {
+    res.json(err);
+  })
+});
+
 module.exports = router;
