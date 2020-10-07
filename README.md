@@ -1,4 +1,4 @@
-[![Build status](https://api.travis-ci.org/nejdetkadir/nodejs-book-api.png)](https://api.travis-ci.org/nejdetkadir/nodejs-book-api)
+[![Build status](https://api.travis-ci.org/nejdetkadir/nodejs-book-api.svg)](https://api.travis-ci.org/nejdetkadir/nodejs-book-api)
 # Books
 
 | Route | HTTP Verb	 | Post Body	 | Description	 |
