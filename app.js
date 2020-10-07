@@ -12,8 +12,10 @@ const app = express();
 // database connection
 const db = require('./helper/db')();
 const config = require('./config');
+// middleware
+const verifyToken = require('./middleware/verifyToken');
+// global secret key
 app.set('api_secret_key', config.api_secret_key);
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -25,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', verifyToken);
 app.use('/api/books', booksRouter);
 app.use('/api/authors', authorsRouter);
 
