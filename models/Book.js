@@ -4,27 +4,34 @@ const Schema = mongoose.Schema;
 const BookSchema = new Schema({
    name: {
        type: String,
-       required: true
+       required: [true, '`{PATH}` is required.'],
+       minlength: [2, '`{PATH}` is very short for inserting. (min: {MINLENGTH})'],
+       maxlength: [40, '`{PATH}` is very long for inserting. (max: {MAXLENGTH})']
    },
     category: {
         type: String,
-        required: true
+        required: true,
+        minlength: [2, '`{PATH}` is very short for inserting. (min: {MINLENGTH})'],
+        maxlength: [40, '`{PATH}` is very long for inserting. (max: {MAXLENGTH})']
     },
     publisher: {
         type: String,
-        required: true
+        required: true,
+        minlength: [2, '`{PATH}` is very short for inserting. (min: {MINLENGTH})'],
+        maxlength: [40, '`{PATH}` is very long for inserting. (max: {MAXLENGTH})']
     },
     year: {
         type: Number,
-        required: true
+        required: true,
+        max: 2020
     },
     likes: {
         type: Number,
-        required: true
+        default: 0
     },
     author_id: {
         type: Schema.Types.ObjectID,
-        //required: true
+        required: true
     },
     created_at: {
         type: Date,
