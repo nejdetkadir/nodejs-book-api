@@ -13,7 +13,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         minlength: [2, '`{PATH}` is very short for inserting. (min: {MINLENGTH})'],
-        maxlength: [20, '`{PATH}` is very long for inserting. (max: {MAXLENGTH})']
+        maxlength: [70, '`{PATH}` is very long for inserting. (max: {MAXLENGTH})']
     }
 });
 
