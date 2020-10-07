@@ -1,6 +1,5 @@
 [![Build status](https://api.travis-ci.org/nejdetkadir/nodejs-book-api.svg)](https://api.travis-ci.org/nejdetkadir/nodejs-book-api)
 # Books
-
 | Route | HTTP Verb	 | Post Body	 | Description	 |
 | --- | --- | --- | --- |
 | /api/books | `GET` | Empty | List all books. |
@@ -20,6 +19,14 @@
 | /api/authors/:author_id | `PUT` | {'bio': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'} | Update a author with new info. |
 | /api/authors/:author_id | `DELETE` | Empty | Delete a author. |
 
-# LICENSE
+# Index
+| Route | HTTP Verb	 | POST Body	 | Description	 |
+| --- | --- | --- | --- |
+| /register | `POST` | { username: 'loremipsum', password:'1234' } | Create a new user. |
+| /authenticate | `POST` | { username: 'loremipsum', password:'1234' } | Generate a token. |
 
+# Demo
+[Live demo on Heroku](https://nodejs-books-api.herokuapp.com/)
+
+# LICENSE
 This Application is licensed under the MIT license.
