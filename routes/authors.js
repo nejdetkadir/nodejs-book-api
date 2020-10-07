@@ -117,7 +117,7 @@ router.put('/:author_id', (req, res, next) => {
   promise.then((author) => {
     if (!author)
       next({
-        message: 'The editor not found.'
+        message: 'The author not found.'
       });
     res.json({
       status: true
