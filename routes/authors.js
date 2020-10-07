@@ -127,4 +127,20 @@ router.put('/:author_id', (req, res, next) => {
   });
 });
 
+/* REMOVE single author with by id. */
+router.delete('/:author_id', (req, res, next) => {
+  const promise = Author.findByIdAndRemove(req.params.author_id);
+  promise.then((author) => {
+    if (!author)
+      next({
+        message: 'The author not found.'
+      });
+    res.json({
+      status: true
+    });
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
 module.exports = router;
